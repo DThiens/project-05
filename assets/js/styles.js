@@ -1,29 +1,48 @@
-// Processing when play or pause video
+// Processing when play or pause video button
 const playBtn = document.getElementById("playBtn");
 const video = document.querySelector(".project__video");
-playBtn.onclick = () => {
-  if (video.paused) {
-    video.play();
-    playBtn.style.display = "none";
-  } else {
-    video.pause();
-    playBtn.style.display = "flex";
-  }
-};
+const playIcon = document.getElementById("playIcon");
+const pauseIcon = document.getElementById("pauseIcon");
 
-video.addEventListener("click", (e) => {
+playBtn.addEventListener("mouseenter", () => {
+  playBtn.style.opacity = "1";
+  playBtn.onclick = () => {
+    if (video.paused) {
+      playIcon.style.opacity = 0;
+      pauseIcon.style.opacity = 1;
+      video.play();
+    } else {
+      video.pause();
+      playIcon.style.opacity = 1;
+      pauseIcon.style.opacity = 0;
+    }
+  };
+});
+
+video.addEventListener("click", () => {
   if (video.paused) {
-    video.play();
-    playBtn.style.display = "none";
+    playIcon.style.opacity = 0;
+    pauseIcon.style.opacity = 1;
   } else {
-    video.pause();
-    playBtn.style.display = "flex";
+    playIcon.style.opacity = 1;
+    pauseIcon.style.opacity = 0;
   }
 });
 
-video.addEventListener("ended", (e) => {
-  playBtn.style.display = "flex";
-  video.removeAttribute("controls");
+video.addEventListener("mouseenter", () => {
+  playBtn.style.opacity = "1";
+  video.controls = true;
+});
+
+video.addEventListener("mouseleave", () => {
+  playBtn.style.opacity = "0";
+  video.controls = false;
+});
+
+video.addEventListener("ended", () => {
+  playBtn.style.opacity = "1";
+  playIcon.style.opacity = 1;
+  pauseIcon.style.opacity = "0";
 });
 
 // Processing add or remove actived navbar
@@ -71,4 +90,18 @@ listItem.forEach((item) => {
     selectedItem.classList.remove("list-item--active");
     item.classList.add("list-item--active");
   };
+});
+
+// Hide Navigation bar
+const navTop = document.querySelector(".header-top.fixed");
+
+navTop.addEventListener("mouseenter", (e) => {
+  navTop.classList.add("header-top--active");
+});
+
+navTop.addEventListener("mouseleave", () => {
+  navActived = document.querySelector(".header-top--active");
+  if (navActived != null) {
+    navActived.classList.remove("header-top--active");
+  }
 });
