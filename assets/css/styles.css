@@ -211,6 +211,15 @@ a {
   border-radius: 50%;
   width: 57px;
   height: 59px;
+  transition: 0.3s;
+}
+
+.hero__play-half-circle:hover {
+  transform: rotate(135deg);
+}
+
+.hero__play-half-circle:hover .hero__play-icon {
+  transform: rotate(-135deg);
 }
 
 .hero__play-icon {
@@ -756,7 +765,7 @@ a {
   right: 92px;
 }
 
-.process__img--active img{
+.process__img--active img {
   display: block;
 }
 

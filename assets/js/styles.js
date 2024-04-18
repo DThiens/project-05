@@ -53,7 +53,7 @@ logo.onclick = () => {
 // Processing add or remove actived process__list
 const processItem = document.querySelectorAll(".process__item");
 processItem.forEach((item) => {
-  item.addEventListener("mousemove", () => {
+  item.addEventListener("mouseenter", () => {
     const selectedItem = document.querySelector(".process__item--active");
     const img = document.querySelector(".process__item.process__img--active");
     img.classList.remove("process__img--active");
