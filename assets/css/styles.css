@@ -1329,9 +1329,10 @@ a {
 
 .footer__copyright-text {
   text-align: center;
-  color: #fff;
+  color: #6a8383;
   font-family: "Public Sans";
-  font-size: 1.8rem;
+  font-size: 1.6rem;
+  font-style: normal;
   font-weight: 500;
-  line-height: 1.5;
+  line-height: 2.25;
 }
