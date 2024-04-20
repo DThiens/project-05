@@ -228,12 +228,16 @@ a {
 }
 
 .hero__play-half-circle:hover {
-  opacity: 0.7;
+  border-color: #83a17d transparent transparent #83a17d;
   transform: rotate(135deg);
 }
 
 .hero__play-half-circle:hover .hero__play-icon {
   transform: rotate(-135deg);
+}
+
+.hero__play-icon:hover {
+  background: var(--primary-color);
 }
 
 .hero__play-icon {
