@@ -106,6 +106,22 @@ processItem.forEach((item) => {
   });
 });
 
+// Processing add or remove actived service__list
+const serviceItem = document.querySelectorAll(".service-item");
+console.log(serviceItem);
+serviceItem.forEach((item) => {
+  const status = document.querySelector(".serivce-item--active");
+  if (status == null) {
+    item.onclick = () => {
+      const selectedItem = document.querySelector(".serivce-item--active");
+      if (selectedItem != null) {
+        selectedItem.classList.remove("serivce-item--active");
+      }
+      item.classList.add("serivce-item--active");
+    };
+  }
+});
+
 // Processing add or remove actived share__list
 const listItem = document.querySelectorAll(".list-item");
 listItem.forEach((item) => {
