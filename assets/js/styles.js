@@ -108,7 +108,6 @@ processItem.forEach((item) => {
 
 // Processing add or remove actived service__list
 const serviceItem = document.querySelectorAll(".service-item");
-console.log(serviceItem);
 serviceItem.forEach((item) => {
   const status = document.querySelector(".serivce-item--active");
   if (status == null) {
