@@ -932,11 +932,11 @@ a {
   border: none;
   cursor: pointer;
   z-index: 1;
+  transition: 0.3s ease-in-out;
 }
 
 .project__media__play-btn:hover {
   background: #83a17d;
-  transition: 0.3s;
 }
 
 .project__media__play-btn-image {
@@ -962,12 +962,12 @@ a {
   position: absolute;
 }
 
-.project__media > svg:nth-child(3) {
+.project__media > svg:nth-child(1) {
   top: -72px;
   right: -50px;
 }
 
-.project__media > svg:nth-child(4) {
+.project__media > svg:nth-child(2) {
   top: -165px;
   right: -52px;
 }

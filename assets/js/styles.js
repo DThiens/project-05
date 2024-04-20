@@ -1,11 +1,15 @@
 // Processing when play or pause video button
-const playBtn = document.getElementById("playBtn");
+const playBtn = document.querySelector(".project__media__play-btn.btn");
 const video = document.querySelector(".project__video");
 const playIcon = document.getElementById("playIcon");
 const pauseIcon = document.getElementById("pauseIcon");
 
+video.preload = "auto";
+let timer;
+
 playBtn.addEventListener("mouseenter", () => {
-  playBtn.style.opacity = "1";
+  playBtn.style.opacity = 1;
+  clearTimeout(timer);
   playBtn.onclick = () => {
     if (video.paused) {
       playIcon.style.opacity = 0;
@@ -19,28 +23,48 @@ playBtn.addEventListener("mouseenter", () => {
   };
 });
 
-video.addEventListener("click", () => {
+video.addEventListener("mousemove", (e) => {
+  clearTimeout(timer);
+  playBtn.style.opacity = 1;
+  video.controls = true;
+  let value = e.clientX;
   if (video.paused) {
-    playIcon.style.opacity = 0;
-    pauseIcon.style.opacity = 1;
+    playBtn.style.opacity = 1;
   } else {
-    playIcon.style.opacity = 1;
-    pauseIcon.style.opacity = 0;
+    timer = setTimeout(() => {
+      if (value == e.clientX) {
+        playBtn.style.opacity = 0;
+      } else {
+        playBtn.style.opacity = 1;
+      }
+    }, 3000);
   }
 });
 
-video.addEventListener("mouseenter", () => {
-  playBtn.style.opacity = "1";
-  video.controls = true;
+video.addEventListener("mousedown", () => {
+  playBtn.style.opacity = 1;
+  if (video.paused) {
+    let timeCounter;
+    clearTimeout(timeCounter);
+    playIcon.style.opacity = 0;
+    pauseIcon.style.opacity = 1;
+    timeCounter = setTimeout(() => {
+      playBtn.style.opacity = 0;
+    }, 3000);
+  } else {
+    playIcon.style.opacity = 1;
+    pauseIcon.style.opacity = 0;
+    playBtn.style.opacity = 1;
+  }
 });
 
 video.addEventListener("mouseleave", () => {
-  playBtn.style.opacity = "0";
+  playBtn.style.opacity = 1;
   video.controls = false;
 });
 
 video.addEventListener("ended", () => {
-  playBtn.style.opacity = "1";
+  playBtn.style.opacity = 1;
   playIcon.style.opacity = 1;
   pauseIcon.style.opacity = "0";
 });
@@ -85,11 +109,16 @@ processItem.forEach((item) => {
 // Processing add or remove actived share__list
 const listItem = document.querySelectorAll(".list-item");
 listItem.forEach((item) => {
-  item.onclick = () => {
-    const selectedItem = document.querySelector(".list-item--active");
-    selectedItem.classList.remove("list-item--active");
-    item.classList.add("list-item--active");
-  };
+  const status = document.querySelector(".list-item--active");
+  if (status == null) {
+    item.onclick = () => {
+      const selectedItem = document.querySelector(".list-item--active");
+      if (selectedItem != null) {
+        selectedItem.classList.remove("list-item--active");
+      }
+      item.classList.add("list-item--active");
+    };
+  }
 });
 
 // Hide Navigation bar
