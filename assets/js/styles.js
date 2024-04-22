@@ -41,25 +41,21 @@ video.addEventListener("mousemove", (e) => {
   }
 });
 
-video.addEventListener("mousedown", () => {
+video.addEventListener("click", () => {
   playBtn.style.opacity = 1;
   if (video.paused) {
-    let timeCounter;
-    clearTimeout(timeCounter);
     playIcon.style.opacity = 0;
     pauseIcon.style.opacity = 1;
-    timeCounter = setTimeout(() => {
-      playBtn.style.opacity = 0;
-    }, 3000);
+    playBtn.style.opacity = 0;
   } else {
+    playBtn.style.opacity = 1;
     playIcon.style.opacity = 1;
     pauseIcon.style.opacity = 0;
-    playBtn.style.opacity = 1;
   }
 });
 
 video.addEventListener("mouseleave", () => {
-  playBtn.style.opacity = 1;
+  playBtn.style.opacity = 0;
   video.controls = false;
 });
 
